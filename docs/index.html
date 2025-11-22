@@ -1,1 +1,132 @@
-hello git
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acoustic Scene Classification Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    h2 {
+      margin-top: 40px;
+      border-left: 5px solid #333;
+      padding-left: 10px;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Acoustic Scene Classification Project</h1>
+  </header>
+
+  <div class="container">
+    <h2>Overview</h2>
+    <p>
+      This project implements multiple machine learning and deep learning pipelines for the
+      <strong>TAU 2019 Acoustic Scene Classification</strong> dataset. The goal is to classify
+      audio recordings based on their environment (e.g., street, bus, airport, home, etc.).
+    </p>
+
+    <h2>Core Components</h2>
+    <ul>
+      <li><strong>Classical ML models</strong>: Support Vector Machine (SVM) and Random Forest.</li>
+      <li><strong>Deep Learning model</strong>: Convolutional Neural Network (CNN) trained on log-mel spectrograms.</li>
+      <li><strong>Feature extraction</strong>: Log-mel spectrograms computed using Librosa.</li>
+      <li><strong>Augmentation</strong>: Custom waveform-level augmentation pipeline.</li>
+      <li><strong>Configuration system</strong>: Centralized hyperparameter and path management.</li>
+    </ul>
+
+    <h2>Project Structure</h2>
+    <pre>
+config.py     - Central configuration for features, models, paths
+models.py     - SVM, Random Forest, and PyTorch CNN definitions
+train.py      - Training script for SVM and Random Forest
+CNN_train.py  - Training loop for Convolutional Neural Network
+augment.py    - Waveform-level augmentation utilities
+features.py   - Feature extraction helpers
+cv_search.py  - Parameter grid search for classical models
+    </pre>
+
+    <h2>Data Processing</h2>
+    <p>
+      Input audio files are resampled to a fixed sampling rate and converted into
+      <strong>log-mel spectrograms</strong>. Each spectrogram is normalized and padded/cropped to a
+      fixed time dimension so it can be fed into the neural network.
+    </p>
+
+    <h2>The CNN Model</h2>
+    <p>
+      The CNN is designed to learn time-frequency patterns typical of acoustic scenes.
+      The architecture includes:
+    </p>
+    <ul>
+      <li>3 convolutional blocks (Conv → BatchNorm → ReLU → MaxPool)</li>
+      <li>A fully connected classifier head</li>
+      <li>Dropout for regularization</li>
+    </ul>
+    <p>The model predicts probabilities for all scene categories.</p>
+
+    <h2>Training Workflow</h2>
+    <ol>
+      <li>Load metadata and perform grouped train/test split.</li>
+      <li>Apply data augmentation (training only).</li>
+      <li>Extract log-mel spectrograms.</li>
+      <li>Train CNN for a configurable number of epochs.</li>
+      <li>Save the best-performing model.</li>
+    </ol>
+
+    <h2>Results & Evaluation</h2>
+    <p>
+      The framework reports:
+    </p>
+    <ul>
+      <li>Training and test accuracy per epoch</li>
+      <li>Classification report (precision, recall, F1)</li>
+      <li>Confusion matrix for detailed class-by-class performance</li>
+    </ul>
+
+    <h2>Future Improvements</h2>
+    <ul>
+      <li>Add CRNN (CNN + LSTM) architecture</li>
+      <li>Integrate SpecAugment for improved robustness</li>
+      <li>Deploy trained model in a web inference demo</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 Acoustic Scene Classification Project
+  </footer>
+</body>
+</html>
