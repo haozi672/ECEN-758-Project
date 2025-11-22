@@ -41,3 +41,19 @@ def expand_grid(grid: dict) -> list[dict]:
     return [dict(zip(keys, combo)) for combo in product(*vals)]
 SVM_PARAM_SPACE_DEFAULT = expand_grid(SVM_GRID)
 RF_PARAM_SPACE_DEFAULT  = expand_grid(RF_GRID)
+
+
+CNN_DEFAULTS = {
+    "batch_size": 32,
+    "epochs": 30,
+    "lr": 1e-3,
+    "weight_decay": 1e-4,
+    "n_mels": FEATURE_DEFAULTS["logmel"]["n_mels"],
+    "hop": FEATURE_DEFAULTS["logmel"]["hop"],
+    "fmin": FEATURE_DEFAULTS["logmel"]["fmin"],
+    "fmax": FEATURE_DEFAULTS["logmel"]["fmax"],  # None -> sr/2
+    "max_frames": 256,
+    "n_aug": 1,
+}
+
+CNN_MODEL_PATH = os.path.join(MODELS_DIR, "cnn.pt")
