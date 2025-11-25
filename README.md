@@ -32,28 +32,7 @@ CNN_with_MetricLearning.ipynb
 5. Additionally, the EDA file also require to download the dataset, and you can run it with
 ```bash
 EDA_and_DataPrep.ipynb
-...
 ```
----
-
-## Project Features
-
-WIP
-
----
-
-## Requirements
-
-- Python 3.9+ (3.10/3.11 also fine)
-- `numpy`, `scipy`, `pandas`, `scikit-learn`, `librosa`, `tqdm`, `joblib`
-
-Install:
-```bash
-pip install -U numpy scipy pandas scikit-learn librosa tqdm joblib
-```
-
----
-
 ## Dataset
 
 TAU Urban Acoustic Scenes 2019: https://zenodo.org/records/2589280 
@@ -64,90 +43,7 @@ audio/airport-lisbon-1000-40000-a.wav    airport            lisbon-1000   a
 audio/bus-lyon-1001-40001-a.wav          bus                lyon-1001     a
 audio/street_pedestrian-milan-1005-...   street_pedestrian  milan-1005    a
 ```
-
+You can also acquire the dataset with google drive link:
+https://drive.google.com/drive/folders/1POLnlVu4lNKPy9V2-_Gh_vZY70iRoBZP?usp=drive_link
+https://drive.google.com/drive/folders/1FTAqSvYaIZ-bTZG0sidt9bvX-U3JO_d_?usp=drive_link
 ---
-
-## Cross‑Validation (CV)
-
-### Simple CV (recommended starting point)
-
-**MFCC, no augmentation**
-```bash
-python cv_search.py --feature mfcc --aug 0 --folds 5
-```
-
-**MFCC, with augmentation (1 per clip)**
-```bash
-python cv_search.py --feature mfcc --aug 1 --folds 5
-```
-
-**Log‑Mel (128 mels), no augmentation**
-```bash
-python cv_search.py --feature logmel --n_mels 128 --hop 1024 --fmin 50 --fmax 0 \
-  --aug 0 --folds 5
-```
-
-**Log‑Mel (128 mels), with augmentation**
-```bash
-python cv_search.py --feature logmel --n_mels 128 --hop 1024 --fmin 50 --fmax 0 \
-  --aug 1 --folds 5
-```
----
-
-## Training
-
-`train.py` uses a **grouped hold‑out** (by `identifier`) for a quick final evaluation and will **auto‑load** the JSON produced by CV **matching your feature + aug flags**.
-
-**Train SVM & RF — MFCC, no augmentation**
-```bash
-python train.py --feature mfcc --aug 0 --models svm rf
-```
-
-**Train SVM only — Log‑Mel 128, light augmentation**
-```bash
-python train.py --feature logmel --n_mels 128 --hop 1024 --fmin 50 --fmax 0 \
-  --aug 1 --models svm
-```
-
-### Manual overrides (if you want)
-
-- Use best‑params **JSON** explicitly:
-  ```bash
-  python train.py --feature mfcc --aug 0 --models svm \
-    --svm_params_json .cache/best_svm_mfcc_aug0.json
-  ```
-
-- Or pass **flags** (highest priority):
-  ```bash
-  python train.py --feature mfcc --aug 0 --models svm \
-    --svm_C 10 --svm_gamma 0.001
-
-  python train.py --feature mfcc --aug 0 --models rf \
-    --rf_n_estimators 900 --rf_max_depth 60 --rf_max_features sqrt
-  ```
-
-`train.py` precedence: **manual flags > params JSON > built‑in defaults**.
-
----
-
-## Configuration
-
-All defaults and grids live in **`config.py`**:
-- Audio: `SR`, `N_MFCC`
-- Feature defaults (MFCC / Log‑Mel)
-- Cache directories
-- Split/random seeds
-- **SVM/RF grids** (`SVM_GRID`, `RF_GRID`) + `expand_grid()`
-- Pre‑expanded: `SVM_PARAM_SPACE_DEFAULT`, `RF_PARAM_SPACE_DEFAULT`
-
-Change grids in **one place** and both CV and training will pick them up.
-
----
-
-## License
-WIP
-
----
-
-## Citation
-WIP
