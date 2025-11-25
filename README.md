@@ -24,6 +24,7 @@ pip install -r Requirement.txt --quiet
 Model_Comparison.ipynb
 ```
 4.If you want to run the training files, you will have to download the dataset(37gbs) and follow the file structure provided in step 1 and run any of the following files:
+(Note: code related to the research extension is included in the CNN file)
 ```bash
 SVM.ipynb
 RF.ipynb
