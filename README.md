@@ -1,5 +1,5 @@
 # TAU Urban Acoustic Scenes 2019 Project
-Website: [https://haozi672.github.io/ECEN-758-Project/](https://sanghoonchung.github.io/ECEN758project/)
+Website: https://sanghoonchung.github.io/ECEN758project/
 
 Description here WIP
 ---
