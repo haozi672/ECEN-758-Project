@@ -1,5 +1,5 @@
-# TAU Urban Acoustic Scenes 2019
-https://haozi672.github.io/ECEN-758-Project/
+# TAU Urban Acoustic Scenes 2019 Project
+Website: https://haozi672.github.io/ECEN-758-Project/
 
 Description here WIP
 ---
@@ -11,7 +11,7 @@ python -m venv .venv && source .venv/bin/activate
 ```
 ```bash
 # requirement
-pip install -U numpy scipy pandas scikit-learn librosa tqdm joblib
+pip install -r Requirement.txt --quiet
 ```
 2.Clone this repo into your desired file location. Due to the size of the dataset they are not included here which means you should download the dataset into the following directory:
 ```bash
@@ -19,20 +19,20 @@ pip install -U numpy scipy pandas scikit-learn librosa tqdm joblib
 ./evaluation_setup
 ./meta.csv
 ```
-3.Now you can run the code to acquire your params from CV, here is a example:
+3.If you only want to run the evaluation code, the trained models are attached all information will be obtailed by running the following file:
 ```bash
-python cv_search.py --feature mfcc --aug 0 --folds 5
+Model_Comparison.ipynb
 ```
-4.The train file read the output from the CV you should only need to run following
+4.If you want to run the training files, you will have to download the dataset(37gbs) and follow the file structure provided in step 1 and run any of the following files:
 ```bash
-python train.py --feature mfcc --aug 0 --models svm rf
+SVM.ipynb
+RF.ipynb
+CNN_with_MetricLearning.ipynb
 ```
-5. note that there are multiple settings in the CV file
+5. Additionally, the EDA file also require to download the dataset, and you can run it with
 ```bash
-feature: mfcc logmel
-augentation: --aug 0 (no augmentation) --aug 1 (augmentation)
+EDA_and_DataPrep.ipynb
 ...
-you can also change the k value and so on
 ```
 ---
 
