@@ -166,9 +166,9 @@ To avoid location-level leakage and ensure realistic evaluation:
 
 *Figure 1. Waveforms (left) and log-mel spectrograms (right) for various urban sound scenes.*
 
-### Model Overview
 
-(Briefly describe SVM, Random Forest, CRNN setup here.)
+
+
 
 ![PCA_MFCC](website/PCA_MFCC.png)
 
