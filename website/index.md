@@ -162,11 +162,11 @@ To avoid location-level leakage and ensure realistic evaluation:
 **PCA / t-SNE of Feature Space**  
 - Pooled features projected to 2D show partial class clustering and overlap patterns, guiding expectations for model confusion behavior.
 
-![img1](website/wavelength_log-mel_spectrogram_snippet.png)
+![Wavelength_log-mel_spectrogram_snippet](website/wavelength_log-mel_spectrogram_snippet.png)
 
 *Figure 1. Waveforms (left) and log-mel spectrograms (right) for various urban sound scenes.*
 
-![img2](website/PCA_MFCC.png)
+![PCA_MFCC](website/PCA_MFCC.png)
 
 *Figure 2. PCA of MFCC pooled features for urban sound samples.*
 
