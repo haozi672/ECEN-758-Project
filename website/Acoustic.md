@@ -166,13 +166,10 @@ To avoid location-level leakage and ensure realistic evaluation:
 
 *Figure 1. Waveforms (left) and log-mel spectrograms (right) for various urban sound scenes.*
 
-
-
-
-
 ![PCA_MFCC](website/PCA_MFCC.png)
 
 *Figure 2. PCA of MFCC pooled features for urban sound samples.*
+
 ---
 ## Model Description
 
